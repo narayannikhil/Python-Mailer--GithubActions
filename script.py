@@ -18,7 +18,7 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
     msg['subject'] = subject
     msg.attach(MIMEText(body, 'plain'))
 
-        try:
+    try:
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
             server.login(sender_email, sender_password)
@@ -27,7 +27,7 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
             server.quit()
              
             print ('email sent succesfully ')
-        except Exception as e:
+    except Exception as e:
             print(f'error: {e}')    
 
     send_mail(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
